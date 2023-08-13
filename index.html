@@ -7,7 +7,7 @@
   </style>
 </head>
 <body>
-  CEP: <input type="text" name="cepBusca" id="cepBusca" value="12712090">
+  CEP: <input type="text" name="cepBusca" id="cepBusca" value="">
 	<button  onclick="conectarApi( document.getElementById('cepBusca').value )">Clique para buscar o cep</button>
 	<div id="Cep">    
 	</div>
@@ -18,9 +18,43 @@
 </body>
 <script >
 
+ function validarCep(cep){
+
+       
+       var numsCep = cep.replace(/\D/g, '');
+         
+       if (cep.length>9 || numsCep.length!=8 || cep.length<8 ) {
+          return false;
+       }
+       else{
+          if (cep.length==8){
+            return true;
+          }
+          else{
+            if(cep.indexOf("-")==5){
+                return true;
+            }
+            else{
+               return false;  
+            }
+            
+          }
+       }
+    }
+
 
 
 async function conectarApi(value) {
+ 
+  if (!validarCep(value)){
+     
+     var mensagemCepNaoEncontrado="<p> Cep Invalido </p>";
+
+     document.getElementById("Cep").innerHTML=mensagemCepNaoEncontrado;
+     document.getElementById("Endereco").innerHTML="";
+     return;
+  }
+ 
   //Buscando na api utilizando o valor de cep passado pelo usuário 
   const response = await fetch("https://viacep.com.br/ws/"+value+"/json/");
   //Guardado a resposta em um objeto json
@@ -70,7 +104,7 @@ async function conectarApi(value) {
     
   }else{
     //Responder com mensagem na tela quando o cep não for encontrado 
-    var mensagemCepNaoEncontrado="<p> Cep Não encontrado </p>";
+    var mensagemCepNaoEncontrado="<p> Cep Nao encontrado </p>";
   	document.getElementById("Cep").innerHTML=mensagemCepNaoEncontrado;
     document.getElementById("Endereco").innerHTML=endereco="";
   }
