@@ -2,12 +2,13 @@
 <html>
 <head>
   <style>
-  input {background-color: powderblue;margin: 5px;}
+  input {background-color: powderblue;margin: 5px;width:190px;}
   p    {color: red;}
   </style>
 </head>
 <body>
-  CEP: <input type="text" name="cepBusca" id="cepBusca" value="">
+  <label for="cepBusca">CEP:</label>
+  <input placeholder="NNNNNNNN ou NNNNN-NNN" type="text" name="cepBusca" id="cepBusca" value="" >
 	<button  onclick="conectarApi( document.getElementById('cepBusca').value )">Clique para buscar o cep</button>
 	<div id="Cep">    
 	</div>
@@ -91,15 +92,15 @@ async function conectarApi(value) {
 
     //Tratamento das informações para serem vistas em inputs
     var endereco=' ';
-    endereco+='<br><br> ENDERECO:    <input type="text" name="endereco" id="endereco" value="'+logradouro+'"> ';
-    endereco+='<br> COMPLEMENTO:     <input type="text" name="complemento" id="complemento" value="'+complemento+'"> ';
-    endereco+='<br> BAIRRO:          <input type="text" name="bairro" id="bairro" value="'+bairro+'"> ';
-    endereco+='<br> CIDADE:          <input type="text" name="cidade" id="cidade" value="'+cidade+'"> ';
-    endereco+='<br> UF:              <input type="text" name="uf" id="uf" value="'+uf+'"> ';
-    endereco+='<br> IBGE:            <input type="text" name="ibge" id="ibge" value="'+ibge+'"> ';
-    endereco+='<br> GIA:             <input type="text" name="gia" id="gia" value="'+gia+'"> ';
-    endereco+='<br> DDD:             <input type="text" name="ddd" id="ddd" value="'+ddd+'"> ';
-    endereco+='<br> SIAFI:           <input type="text" name="siafi" id="siafi" value="'+siafi+'"> ';
+    endereco+='<br><br> ENDERECO:    <input readonly type="text" name="endereco" id="endereco" value="'+logradouro+'"> ';
+    endereco+='<br> COMPLEMENTO:     <input readonly type="text" name="complemento" id="complemento" value="'+complemento+'"> ';
+    endereco+='<br> BAIRRO:          <input readonly type="text" name="bairro" id="bairro" value="'+bairro+'"> ';
+    endereco+='<br> CIDADE:          <input readonly type="text" name="cidade" id="cidade" value="'+cidade+'"> ';
+    endereco+='<br> UF:              <input readonly type="text" name="uf" id="uf" value="'+uf+'"> ';
+    endereco+='<br> IBGE:            <input readonly type="text" name="ibge" id="ibge" value="'+ibge+'"> ';
+    endereco+='<br> GIA:             <input readonly type="text" name="gia" id="gia" value="'+gia+'"> ';
+    endereco+='<br> DDD:             <input readonly type="text" name="ddd" id="ddd" value="'+ddd+'"> ';
+    endereco+='<br> SIAFI:           <input readonly type="text" name="siafi" id="siafi" value="'+siafi+'"> ';
     document.getElementById("Endereco").innerHTML=endereco;
     
   }else{
