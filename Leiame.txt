@@ -2,4 +2,6 @@ O Consumo sem framework funciona da seguinte maneira
 
 O usuário deve digitar um cep e clicar no botaão "clique para buscar o cep " então código buscara na api as informações sobre o mesmo.
 
+As informações do cep no padrão json convertida para string serão mostradas na tela.
+
 As informações do cep serão tratadas e demonstradas via tela dentro dos inputs.
